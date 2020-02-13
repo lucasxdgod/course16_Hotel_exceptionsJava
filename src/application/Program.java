@@ -35,12 +35,19 @@ public class Program {
 			System.out.println("Check-out date (dd/MM/yyy): ");
 			checkOut = sdf.parse(sc.next());
 			
-			reservation.updateDates(checkIn, checkOut);
+			// Tratando o erro das datas de reservas ser futuras bem como as datas de check-in ser futura a data de check-out 
+			String error = reservation.updateDates(checkIn, checkOut);
 			
-			
+			if (error != null) {
+				System.out.println("Error in reservation: " +error);
+			}	
+			else {
+				System.out.println("Reservation: "+reservation);
+			}
 			
 		}
 		
+		sc.close();
 		
 		
 	}
